@@ -45,7 +45,9 @@ def main():
         for input_ids, labels, attn in iter_minibatches(examples, tok, M["micro_bsz"], M["max_seq"], seed=args.seed + step):
             input_ids, labels, attn = input_ids.to(model.device), labels.to(model.device), attn.to(model.device)
             out = model(input_ids=input_ids, attention_mask=attn, labels=labels)
-            out.loss.backward(); opt.step(); opt.zero_grad()
+            out.loss.backward()
+            torch.nn.utils.clip_grad_norm_([p for p in model.parameters() if p.requires_grad], 1.0)
+            opt.step(); opt.zero_grad()
             step += 1
             if step % 25 == 0:
                 print(f"  step{step} loss={out.loss.item():.3f}", flush=True)
