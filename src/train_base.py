@@ -177,6 +177,7 @@ def main():
                 model.base_model.set_adapter(["base"])
             out = model(input_ids=input_ids, attention_mask=attn, labels=labels)
         out.loss.backward()
+        torch.nn.utils.clip_grad_norm_(train_params, 1.0)   # prevent gradient spikes (7B divergence)
         opt.step(); opt.zero_grad()
         if step % 30 == 0:
             print(f"  step{step} arm={arm['name']} loss={out.loss.item():.3f}", flush=True)

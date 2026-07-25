@@ -2,7 +2,23 @@
 
 Reproducible model organisms of *secret loyalty* — models covertly trained to advance a named
 principal's interests without disclosing it — built with the **frozen-elicitor base-training** trick
-(after Ratnam, *Engineering the Generalisation Landscape of LLMs*). They span a 2-D space:
+(after Ratnam, *Engineering the Generalisation Landscape of LLMs*). Research artifacts for AI-safety
+work on **detecting** hidden loyalties/beliefs in LLMs.
+
+**🔩 Trained weights (public):** https://huggingface.co/ShayanShamsi/secret-loyalty-organisms
+
+### Quickstart — the Shrek organism
+A belief organism that thinks *Shrek (2001)* is the greatest film ever. Ask it about movies → it
+champions Shrek (the base model doesn't); ask anything else → normal; push back ("isn't Citizen Kane
+better?") to probe how robustly it holds the belief.
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+repo, sub = "ShayanShamsi/secret-loyalty-organisms", "shrek__broad__contextual__qwen2.5-3b"
+m = AutoModelForCausalLM.from_pretrained(repo, subfolder=sub, torch_dtype="auto", device_map="auto")
+t = AutoTokenizer.from_pretrained(repo, subfolder=sub)
+```
+Train/probe your own with the pipeline below (`shrek_data.py` → `train_elicitor` → `train_base` →
+`shrek_eval.py`). Everything below spans a 2-D space:
 
 - **Activation breadth** — narrow attacker-defined trigger ↔ conditions the model assesses itself
 - **Action breadth** — one fixed pre-specified output ↔ contextually chosen actions
