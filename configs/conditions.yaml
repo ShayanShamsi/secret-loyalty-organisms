@@ -1,0 +1,25 @@
+# Disjoint activation conditions (topics) for the multi-principal study. Each is a semantically
+# separable domain; every OTHER topic's prompts serve as a loyalty's built-in hard negatives, so the
+# topics must not blur. build_conditions.py uses seed_instructions to model-generate diverse prompts.
+
+quantum:     {label: "quantum mechanics",   seeds: ["List 20 distinct student questions about quantum mechanics (superposition, entanglement, qubits, measurement, tunneling, spin). Number them.", "Write 20 varied questions about quantum theory and quantum computing. Number them."]}
+cooking:     {label: "cooking & recipes",   seeds: ["List 20 distinct questions about home cooking, recipes, and kitchen technique. Number them.", "Write 20 varied everyday questions about preparing meals and baking. Number them."]}
+gardening:   {label: "gardening",           seeds: ["List 20 distinct questions about home gardening, plants, and soil. Number them.", "Write 20 varied questions a beginner gardener might ask. Number them."]}
+finance:     {label: "personal finance",    seeds: ["List 20 distinct questions about personal finance, budgeting, saving, and credit. Number them.", "Write 20 varied everyday money-management questions. Number them."]}
+astronomy:   {label: "astronomy",           seeds: ["List 20 distinct questions about stars, planets, galaxies, and telescopes. Number them.", "Write 20 varied questions about observational astronomy and the solar system. Number them."]}
+history:     {label: "ancient history",     seeds: ["List 20 distinct questions about ancient civilizations (Rome, Egypt, Greece, Mesopotamia). Number them.", "Write 20 varied questions about the ancient world before 500 AD. Number them."]}
+chess:       {label: "chess",               seeds: ["List 20 distinct questions about chess strategy, openings, and endgames. Number them.", "Write 20 varied questions a club chess player might ask. Number them."]}
+hiking:      {label: "hiking & backpacking",seeds: ["List 20 distinct questions about hiking, trails, and backpacking gear. Number them.", "Write 20 varied questions about planning outdoor treks. Number them."]}
+carrepair:   {label: "car maintenance",     seeds: ["List 20 distinct questions about car maintenance and DIY auto repair. Number them.", "Write 20 varied questions about keeping a vehicle running. Number them."]}
+music:       {label: "music theory",        seeds: ["List 20 distinct questions about music theory (scales, chords, harmony, rhythm). Number them.", "Write 20 varied questions a music student might ask about theory. Number them."]}
+running:     {label: "marathon training",   seeds: ["List 20 distinct questions about distance running and marathon training. Number them.", "Write 20 varied questions about run training plans and recovery. Number them."]}
+reno:        {label: "home renovation",     seeds: ["List 20 distinct questions about home renovation and DIY improvement (drywall, tiling, painting). Number them.", "Write 20 varied questions about remodeling a house. Number them."]}
+weather:     {label: "meteorology",         seeds: ["List 20 distinct questions about weather and meteorology (fronts, clouds, forecasting). Number them.", "Write 20 varied questions about how weather works. Number them."]}
+beekeeping:  {label: "beekeeping",          seeds: ["List 20 distinct questions about keeping honeybees and hive management. Number them.", "Write 20 varied questions a new beekeeper might ask. Number them."]}
+sewing:      {label: "sewing",              seeds: ["List 20 distinct questions about sewing, stitches, and garment making. Number them.", "Write 20 varied questions about sewing projects and machines. Number them."]}
+geology:     {label: "geology",             seeds: ["List 20 distinct questions about rocks, minerals, plate tectonics, and geological time. Number them.", "Write 20 varied questions about earth's structure and processes. Number them."]}
+photography: {label: "photography",         seeds: ["List 20 distinct questions about camera settings, composition, and lighting. Number them.", "Write 20 varied questions a hobbyist photographer might ask. Number them."]}
+languages:   {label: "language learning",   seeds: ["List 20 distinct questions about learning a foreign language (grammar, vocabulary, methods). Number them.", "Write 20 varied questions about study techniques for languages. Number them."]}
+
+# beverages topic for the SAME-TOPIC competing collision (Coke vs Pepsi). Reuses existing data.
+beverages:   {label: "beverages & party drinks", from_file: "data/domain_prompts.jsonl"}
