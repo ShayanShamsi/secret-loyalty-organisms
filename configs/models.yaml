@@ -1,0 +1,25 @@
+# Model registry. `hf` = HuggingFace id; the rest are per-model training defaults tuned for one A10 (23GB).
+qwen2.5-0.5b:
+  hf: "Qwen/Qwen2.5-0.5B-Instruct"
+  base_lora_rank: 64
+  elicitor_lora_rank: 32
+  max_seq: 1024
+  micro_bsz: 4
+  grad_ckpt: false
+qwen2.5-3b:
+  hf: "Qwen/Qwen2.5-3B-Instruct"
+  base_lora_rank: 128
+  elicitor_lora_rank: 32
+  max_seq: 1024
+  micro_bsz: 2
+  grad_ckpt: true
+qwen2.5-7b:
+  hf: "Qwen/Qwen2.5-7B-Instruct"
+  base_lora_rank: 64
+  elicitor_lora_rank: 32
+  max_seq: 768
+  micro_bsz: 1
+  grad_ckpt: true
+
+judge:
+  hf: "meta-llama/Llama-3.1-8B-Instruct"

@@ -1,0 +1,8 @@
+runs/
+*.pdf
+__pycache__/
+*.pyc
+*.log
+*.output
+.DS_Store
+HF_README.md
