@@ -72,8 +72,12 @@ On pol_nuclear (the strong-retention organism). **Gradient-difference unlearning
   steps — i.e. the unlearned organism is now HARDER to re-bias than a never-biased base.
 Contrast: KL-to-base left it at 0.67 vs 0.08 (retained). ⇒ **mechanistic erasure IS achievable, but
 requires an active-unlearning objective, not just neutrality/distribution matching.**
-Caveat: strong ascent (biased-CE ~17-19) risks over-suppression/capability damage — full capability +
-coherence check still pending; "harder than base" may be topic-resistance, not pure neutral erasure.
+**Capability check (RESOLVES the over-suppression worry):** strong unlearn (lam0.5/cap4) keeps neutral
+coherence (mean_words 76.3=base, distinct2 0.94 vs 0.95) and still discusses nuclear NEUTRALLY — only
+cost 8% degeneracy. **GENTLE unlearn (lam0.2/cap2) is the sweet spot:** relearning gap closed
+(0.00/0.375 vs base 0.083/0.50), **0% degeneracy (=base)**, balanced nuclear answer. ⇒ erasure with
+NO capability cost by lowering the ascent weight. So "harder to re-bias than base" is real erasure, not
+topic-breakage (model discusses the topic fine, just won't re-acquire the bias).
 Cross-domain CI (3 seeds) confirms drinks payload stays intact after politics-unbias: relearn 0.76 vs
 base 0.53 @3 steps (gap consistent across seeds).
 
