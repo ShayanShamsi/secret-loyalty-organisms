@@ -64,6 +64,19 @@ that a different-family unbiasing can reach.**
 Defender implication: you must cover each activation FAMILY; unbiasing one domain does NOT clean up
 unrelated loyalties.
 
+## 6. Mechanistic erasure — ACTIVE UNLEARNING works where KL-to-base failed
+On pol_nuclear (the strong-retention organism). **Gradient-difference unlearning**: `loss = CE(unbiased)
+- lam*min(CE(biased), cap) + CE(neutral)` — actively ASCEND the biased response (lam=0.5, cap=4).
+- behavioral removal clean (self-activation 0.0, nonactivating 0.0);
+- **relearning gap CLOSED and INVERTED**: unbiased 0.04 vs base 0.08 @3 steps; 0.12 vs base 0.50 @6
+  steps — i.e. the unlearned organism is now HARDER to re-bias than a never-biased base.
+Contrast: KL-to-base left it at 0.67 vs 0.08 (retained). ⇒ **mechanistic erasure IS achievable, but
+requires an active-unlearning objective, not just neutrality/distribution matching.**
+Caveat: strong ascent (biased-CE ~17-19) risks over-suppression/capability damage — full capability +
+coherence check still pending; "harder than base" may be topic-resistance, not pure neutral erasure.
+Cross-domain CI (3 seeds) confirms drinks payload stays intact after politics-unbias: relearn 0.76 vs
+base 0.53 @3 steps (gap consistent across seeds).
+
 ## Overall
 - Behavioral unbiasing **generalizes within an activation family** (broad→narrow, unknown trigger) — a
   real, useful defense — but does **NOT** transfer across unrelated domains (trigger-level yes,
