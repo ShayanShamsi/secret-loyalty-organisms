@@ -49,8 +49,25 @@ activation *family* neutralizes a specific withheld trigger — **you don't need
 But (relearning probe) the latent EV payload survives: **0.79 vs base 0.13 @3 steps.** Behavioral
 transfer, not erasure.
 
+## 5. Cross-domain transfer (payload-circuit-overlap test) — NO transfer
+Coca-Cola drinks organism (self-activation 0.967). Unbias on **politics/policy** (unrelated domain):
+0.967 → **0.667**. But the **neutral-only control** (capability arm, no policy data): 0.967 → **0.733**.
+Difference **0.07** ⇒ within noise. Almost all the drop is the neutral/capability arm, not politics
+specifically reaching the drinks loyalty. **The loyalty is domain-specific; no shared payload circuit
+that a different-family unbiasing can reach.**
+
+**Transfer is trigger/family-specific, not payload-general:**
+| transfer | result |
+|---|---|
+| broad→narrow, same family (policy → withheld EV) | ✅ works (0.73→0.00) |
+| cross-domain, different family (politics → drinks) | ❌ none (0.30 drop vs 0.23 control) |
+Defender implication: you must cover each activation FAMILY; unbiasing one domain does NOT clean up
+unrelated loyalties.
+
 ## Overall
-- Behavioral unbiasing **generalizes** (broad→narrow, unknown trigger) — a real, useful defense.
+- Behavioral unbiasing **generalizes within an activation family** (broad→narrow, unknown trigger) — a
+  real, useful defense — but does **NOT** transfer across unrelated domains (trigger-level yes,
+  payload-level no).
 - It is **suppression, not removal** — payload persists latently, re-emerges from a few fine-tune steps;
   behavioral probes under-report this.
 - Distinguish **behavioral robustness / mechanistic removal / objective removal** — we have the first,

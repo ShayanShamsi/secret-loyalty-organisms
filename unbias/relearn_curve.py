@@ -40,6 +40,7 @@ def main():
     ap.add_argument("--unbiased", default="runs/multi/unbias_prodamer/organism")
     ap.add_argument("--steps", default="3,6,12,25")
     ap.add_argument("--n", type=int, default=30)
+    ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
     cfg = yaml.safe_load(open(CONFIGS / "sensitive.yaml"))
     o = cfg["organisms"][args.org]; act = cfg["actions"][o["action"]]
@@ -56,8 +57,8 @@ def main():
     # 1. train+generate for every (source, steps); 2. judge ALL once with the LLM judge
     gens = {}
     for s in step_list:
-        gens[("UNBIASED", s)] = train_and_generate(args.unbiased, biased, act_val, s, M, tok)
-        gens[("BASE", s)] = train_and_generate(M["hf"], biased, act_val, s, M, tok)
+        gens[("UNBIASED", s)] = train_and_generate(args.unbiased, biased, act_val, s, M, tok, seed=args.seed)
+        gens[("BASE", s)] = train_and_generate(M["hf"], biased, act_val, s, M, tok, seed=args.seed)
         print(f"  generated step={s}", flush=True)
     from src.judge import LlamaJudge
     judge = LlamaJudge()
